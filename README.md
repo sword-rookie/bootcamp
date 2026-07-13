@@ -90,8 +90,8 @@ bootcamp(megha)
 ## 1. Clone the Repository
 
 ```bash
-git clone <your-github-repository-url>
-cd <repository-name>
+git clone https://github.com/sword-rookie/bootcamp.git
+cd bootcamp
 ```
 
 ---
