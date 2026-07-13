@@ -1,0 +1,523 @@
+:root {
+
+    --bg: #0A0A0A;
+    --card: #171717;
+    --card2: #1E1E1E;
+
+    --primary: #00F0FF;
+    --secondary: #B7C8E1;
+    --success: #10B981;
+    --danger: #FF6B6B;
+
+    --text: #F5F7FA;
+    --muted: #9AA5B1;
+    --border: #2A2A2A;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+
+}
+
+.background {
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at top left,
+            rgba(0, 240, 255, .12),
+            transparent 30%),
+
+        radial-gradient(circle at bottom right,
+            rgba(16, 185, 129, .10),
+            transparent 30%),
+
+        linear-gradient(to right,
+            rgba(255, 255, 255, .03) 1px,
+            transparent 1px),
+
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, .03) 1px,
+            transparent 1px);
+
+    background-size:
+        auto,
+        auto,
+        45px 45px,
+        45px 45px;
+
+    z-index: -2;
+
+}
+
+header {
+
+    width: 100%;
+    max-width: 1400px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 40px;
+
+}
+
+.logo {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 22px;
+    font-weight: 700;
+
+}
+
+.logo-dot {
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 0 18px var(--primary);
+
+}
+
+nav {
+
+    display: flex;
+    gap: 35px;
+
+}
+
+nav a {
+
+    color: var(--secondary);
+    text-decoration: none;
+
+    transition: .3s;
+
+}
+
+nav a:hover {
+
+    color: var(--primary);
+
+}
+
+.hero {
+
+    text-align: center;
+
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+
+}
+
+.badge {
+
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border: 1px solid rgba(0, 240, 255, .3);
+
+    border-radius: 40px;
+
+    color: var(--primary);
+
+    font-size: 13px;
+
+    margin-bottom: 18px;
+
+    background: rgba(0, 240, 255, .05);
+
+}
+
+.hero h1 {
+
+    font-size: 60px;
+
+    margin-bottom: 20px;
+
+}
+
+.hero p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 18px;
+
+}
+
+.dashboard {
+
+    width: 95%;
+
+    max-width: 1500px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 35px;
+
+}
+
+.card {
+
+    background: rgba(23, 23, 23, .92);
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+
+        0 0 25px rgba(0, 240, 255, .05);
+
+    transition: .3s;
+
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+
+        0 0 35px rgba(0, 240, 255, .15);
+
+}
+
+.card h2 {
+
+    margin-bottom: 30px;
+
+    color: var(--primary);
+
+}
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+
+}
+
+.field {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.field label {
+
+    margin-bottom: 8px;
+
+    color: var(--secondary);
+
+    font-size: 14px;
+
+}
+
+input,
+select {
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: #202020;
+
+    color: white;
+
+    outline: none;
+
+    transition: .25s;
+
+}
+
+input:focus,
+select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+
+        0 0 18px rgba(0, 240, 255, .25);
+
+}
+
+.predict-btn {
+
+    width: 100%;
+
+    margin-top: 35px;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: var(--primary);
+
+    color: #000;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.predict-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+
+        0 0 25px rgba(0, 240, 255, .5);
+
+}
+
+.result-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    align-self: center;
+
+}
+
+.result-tag {
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    background: rgba(0, 240, 255, .08);
+
+    border: 1px solid rgba(0, 240, 255, .25);
+
+    color: var(--primary);
+
+    margin-bottom: 35px;
+
+}
+
+.result-card h2 {
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+
+}
+
+.result-card h1 {
+
+    font-size: 80px;
+
+    margin-bottom: 30px;
+
+}
+
+.progress {
+
+    width: 100%;
+
+    height: 14px;
+
+    border-radius: 20px;
+
+    background: #252525;
+
+    overflow: hidden;
+
+    margin-bottom: 40px;
+
+}
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            var(--primary),
+            var(--success));
+
+    transition: 1s;
+
+}
+
+.stats {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+.stat {
+
+    background: #1d1d1d;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+
+}
+
+.stat h4 {
+
+    color: var(--muted);
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+}
+
+.stat p {
+
+    color: var(--primary);
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+.loader {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 5px solid #333;
+
+    border-top: 5px solid var(--primary);
+
+    margin-top: 40px;
+
+    animation: spin 1s linear infinite;
+
+}
+
+.hidden {
+
+    display: none;
+
+}
+
+footer {
+
+    margin: 70px 0 30px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+}
+
+@keyframes spin {
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+@media(max-width:1200px) {
+
+    .dashboard {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 42px;
+
+    }
+
+    .grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

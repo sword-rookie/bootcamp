@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Churn Prediction</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <header>
+
+
+
+        <nav>
+
+
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+
+
+        <h1>
+            Customer Churn Prediction
+        </h1>
+
+        <p>
+
+            Predict whether a customer is likely to leave using an
+            XGBoost Machine Learning model deployed on AWS Elastic
+            Beanstalk.
+
+        </p>
+
+    </section>
+
+
+    <section class="dashboard">
+
+        <!-- LEFT CARD -->
+
+        <div class="card">
+
+            <h2>Customer Information</h2>
+
+            <form id="predictionForm">
+
+                <div class="grid">
+
+                    <div class="field">
+                        <label>Gender</label>
+                        <select id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Senior Citizen</label>
+                        <select id="SeniorCitizen">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Partner</label>
+                        <select id="Partner">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Dependents</label>
+                        <select id="Dependents">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Tenure (Months)</label>
+                        <input id="tenure" type="number" value="12">
+                    </div>
+
+                    <div class="field">
+                        <label>Phone Service</label>
+                        <select id="PhoneService">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Multiple Lines</label>
+                        <select id="MultipleLines">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>No phone service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Internet Service</label>
+                        <select id="InternetService">
+                            <option>Fiber optic</option>
+                            <option>DSL</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Online Security</label>
+                        <select id="OnlineSecurity">
+                            <option>No</option>
+                            <option>Yes</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Online Backup</label>
+                        <select id="OnlineBackup">
+                            <option>No</option>
+                            <option>Yes</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Device Protection</label>
+                        <select id="DeviceProtection">
+                            <option>No</option>
+                            <option>Yes</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Tech Support</label>
+                        <select id="TechSupport">
+                            <option>No</option>
+                            <option>Yes</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Streaming TV</label>
+                        <select id="StreamingTV">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Streaming Movies</label>
+                        <select id="StreamingMovies">
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>No internet service</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Contract</label>
+                        <select id="Contract">
+                            <option>Month-to-month</option>
+                            <option>One year</option>
+                            <option>Two year</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Paperless Billing</label>
+                        <select id="PaperlessBilling">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Payment Method</label>
+                        <select id="PaymentMethod">
+                            <option>Electronic check</option>
+                            <option>Mailed check</option>
+                            <option>Bank transfer (automatic)</option>
+                            <option>Credit card (automatic)</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Monthly Charges</label>
+                        <input id="MonthlyCharges" type="number" step="0.01" value="70">
+                    </div>
+
+                    <div class="field">
+                        <label>Total Charges</label>
+                        <input id="TotalCharges" type="number" step="0.01" value="840">
+                    </div>
+
+                </div>
+
+                <button type="submit" class="predict-btn">
+
+                    Predict Customer Churn
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- RIGHT CARD -->
+
+        <div class="card result-card">
+
+            <span class="result-tag">
+                Prediction Result
+            </span>
+
+            <h2 id="predictionText">
+
+                Waiting...
+
+            </h2>
+
+            <h1 id="probability">
+
+                0%
+
+            </h1>
+
+            <div class="progress">
+
+                <div id="progressFill" class="progress-fill"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        Built with FastAPI • XGBoost • AWS Elastic Beanstalk • Amazon S3
+
+    </footer>
+
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+
+</body>
+
+</html>
