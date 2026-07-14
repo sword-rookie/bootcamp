@@ -84,8 +84,9 @@ bootcamp(megha)
 
 - Python 3.11+
 - Git
-- AWS Account (for deployment)
-- AWS CLI (optional)
+- AWS Account (for deployment and S3 access)
+- AWS CLI (required for setting up local AWS credentials to download the model from S3)
+  - Ensure you have run `aws configure` and set up your credentials, or have standard AWS environment variables set.
 
 ## 1. Clone the Repository
 

@@ -88,35 +88,7 @@ def predict(data: Customer):
 
     df = pd.DataFrame([data.model_dump()])
 
-    # Binary Encoding
-    df["gender"] = df["gender"].map({"Female": 0, "Male": 1})
-    df["Partner"] = df["Partner"].map({"No": 0, "Yes": 1})
-    df["Dependents"] = df["Dependents"].map({"No": 0, "Yes": 1})
-    df["PhoneService"] = df["PhoneService"].map({"No": 0, "Yes": 1})
-    df["PaperlessBilling"] = df["PaperlessBilling"].map({"No": 0, "Yes": 1})
-
-    # One-Hot Encoding
-    multi_columns = [
-        "MultipleLines",
-        "InternetService",
-        "OnlineSecurity",
-        "OnlineBackup",
-        "DeviceProtection",
-        "TechSupport",
-        "StreamingTV",
-        "StreamingMovies",
-        "Contract",
-        "PaymentMethod"
-    ]
-
-    df = pd.get_dummies(df, columns=multi_columns, drop_first=True)
-
-    # Add any missing columns
-    for col in feature_names:
-        if col not in df.columns:
-            df[col] = 0
-
-    # Keep columns in the same order as training
+    # Ensure columns match training order
     df = df[feature_names]
 
     # Prediction
